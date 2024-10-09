@@ -1,6 +1,6 @@
 <template>
     <div class="container mx-auto px-64">
-        <h2 class="text-2xl text-gray-900">Conditions d'utilisations de l'application</h2><br>
+        <h2 class="text-2xl text-gray-900 font-bold">Conditions d'utilisations de l'application</h2><br>
         <h3 class="text-lg font-medium text-gray-900">1. Objet des conditions d'utilisation</h3>
         <p>Les présentes conditions d'utilisation (ci-après "Conditions") régissent l'accès et l'utilisation de l'application mobile HealthLink (ci-après "l'Application") par ses utilisateurs (ci-après "l'Utilisateur"). En téléchargeant, installant ou utilisant l'application, l'utilisateur accepte les présentes conditions. Si l'utilisateur n'accepte pas ces conditions, il doit cesser toute utilisation de l'application.</p><br>
         <h3 class="text-lg font-medium text-gray-900">2. Description du service</h3>
