@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p>{{ user.address.city }} {{ user.firstname }}</p>
+        <p>{{ user.lastname }} {{ user.firstname }}</p>
     </div>
 </template>
 
