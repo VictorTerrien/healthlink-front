@@ -1,19 +1,10 @@
 import { createRouter, createWebHistory } from "vue-router";
-import { createAuthGuard } from "@auth0/auth0-vue";
 
 import HomeView from '../views/HomeView.vue'
-import CategoryView from '@/views/CategoryView.vue'
-import SingleArticleView from '@/views/SingleArticleView.vue'
-import ErrorPageView from '@/views/ErrorPageView.vue'
-import DisciplineView from "@/views/DisciplineView.vue";
-import ProfilView from '@/views/ProfilView.vue'
-import CompetitionView from "@/views/CompetitionView.vue";
-import TeamView from "@/views/TeamView.vue";
-import PlayerView from "@/views/PlayerView.vue";
-import SingleCompetitionView from "@/views/SingleCompetitionView.vue";
-import SingleTeamView from "@/views/SingleTeamView.vue";
-import SinglePlayerView from "@/views/SinglePlayerView.vue";
-import TestView from "@/views/TestView.vue";
+import UserView from "@/views/UserView.vue";
+import ProView from "@/views/ProView.vue";
+import RegisterView from "@/views/RegisterView.vue";
+import ConditionsView from "@/views/ConditionsView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -24,71 +15,25 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/articles/:ArticleName',
-      name: 'SingleArticle',
-      component: SingleArticleView
+      path: "/user",
+      name: "User",
+      component: UserView
     },
     {
-      path: '/:category(e-sports|sports)',
-      name: 'Category',
-      component: CategoryView
+      path: "/pro",
+      name: "Pro",
+      component: ProView
     },
     {
-      path: '/:category(e-sports)/:Discipline(league-of-legends|valorant|rocket-league|counter-strike-go|super-smash-bros|autres)',
-      name: 'eSportsArticle',
-      component: DisciplineView
+      path: "/register",
+      name: "Register",
+      component: RegisterView
     },
     {
-      path: '/:category(sports)/:Discipline(football|rugby|cyclisme|basketball|tennis|autres)',
-      name: 'SportsArticle',
-      component: DisciplineView
+      path: "/conditions",
+      name: "Conditions",
+      component: ConditionsView
     },
-    {
-      path: '/competitions',
-      name: 'Competitions',
-      component: CompetitionView
-    },
-    {
-      path: '/competitions/:CompetitionName',
-      name: 'SingleCompetition',
-      component: SingleCompetitionView
-    },
-    {
-      path: '/teams',
-      name: 'Team',
-      component: TeamView
-    },
-    {
-      path: '/teams/:TeamName',
-      name: 'SingleTeam',
-      component: SingleTeamView
-    },
-    {
-      path: '/players',
-      name: 'Players',
-      component: PlayerView
-    },
-    {
-      path: '/players/:PlayerName',
-      name: 'SinglePlayer',
-      component: SinglePlayerView
-    },
-    {
-      path: '/:pathMatch(.*)*',
-      name: 'NotFound',
-      component: ErrorPageView
-    },
-    {
-      path: '/profile',
-      name: 'Profile',
-      component: ProfilView,
-      beforeEnter: createAuthGuard()
-    },
-    {
-      path: '/test',
-      name: 'Test',
-      component: TestView
-    }
   ]
 })
 
