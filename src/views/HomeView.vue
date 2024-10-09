@@ -1,24 +1,35 @@
 <template>
-  <div>
-    <div>
-      <RouterLink to="/user">
-        Connexion utilisateur
-      </RouterLink>
-      <RouterLink to="/pro">
-        Connexion Pro
-      </RouterLink>
-      <RouterLink to="/register">
-        Inscription Utilisateur
-      </RouterLink>
-    </div>
+  <div class="flex flex-col">
+    <!-- Contenu principal -->
+    <div class="container px-4 lg:px-64 flex-grow">
+      <div class="m-4 flex flex-col items-center">
+        <h2 class="text-lg font-medium text-gray-900">Connexion au compte :</h2><br>
+        <RouterLink to="/user" class="p-4 m-4 min-w-80 rounded-full text-center text-white font-medium bg-blue-700 hover:bg-blue-800">
+          Connexion utilisateur
+        </RouterLink>
+        <RouterLink to="/pro" class="p-4 m-4 min-w-80 rounded-full text-center text-white font-medium bg-blue-700 hover:bg-blue-800">
+          Connexion Pro
+        </RouterLink>
+      </div>
+      <div class="m-4 flex flex-col items-center">
+        <h2 class="text-lg font-medium text-gray-900">Création du compte :</h2><br>
+        <RouterLink to="/register" class="p-4 m-4 min-w-80 rounded-full text-center text-white font-medium bg-green-700 hover:bg-green-800">
+          Inscription Utilisateur
+        </RouterLink>
+      </div>
+      <div class="m-4 flex flex-col items-center">
+        <h2 class="text-lg font-medium text-gray-900">Scanner un code :</h2><br>
+        <RouterLink to="/register" class="p-4 m-4 min-w-80 rounded-full text-center text-white font-medium bg-red-700 hover:bg-red-800">
+          Scan
+        </RouterLink>
+      </div>
+    </div>  
   </div>
 </template>
 
 <script lang="ts">
-
 export default {
-  setup() {
-  }
+  setup() {}
 };
 </script>
 
