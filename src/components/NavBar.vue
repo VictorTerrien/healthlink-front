@@ -1,16 +1,13 @@
 <template>
-  <nav class="">
-      <!-- Header logo -->
-      <div>
-          <RouterLink to="/">
-            <img
-              src="/src/assets/logo-healthlink.png"
-              alt="logo"
-            />
-            <h1>HealthLink</h1>
-          </RouterLink>
-        </div>
-    </nav>
+<nav class="bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 mb-12">
+    <RouterLink to="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <img src="/src/assets/logo-healthlink.png" class="h-8" alt="Logo" />
+        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">HealthLink</span>
+    </RouterLink>
+  </div>
+</nav>
+
 </template>
 
 <script setup lang="ts">

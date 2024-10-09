@@ -34,7 +34,7 @@ function RequestAuthHelper<T>(
     }
     return axios.request({
         method: method,
-        url: 'https://vikosmos-api.onrender.com' + route,
+        url: 'https://projet-healthlink-api.onrender.com/' + route,
         data: data,
     });
 }
