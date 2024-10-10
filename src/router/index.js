@@ -5,6 +5,7 @@ import UserView from "@/views/UserView.vue";
 import ProView from "@/views/ProView.vue";
 import RegisterView from "@/views/RegisterView.vue";
 import ConditionsView from "@/views/ConditionsView.vue";
+import QrCodeReaderView from "@/views/QrCodeReaderView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -33,6 +34,11 @@ const router = createRouter({
       path: "/conditions",
       name: "Conditions",
       component: ConditionsView
+    },
+    {
+      path: "/qrcode",
+      name: "QrCodeReader",
+      component: QrCodeReaderView
     },
   ]
 })

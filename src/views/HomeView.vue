@@ -18,7 +18,7 @@
       </div>
       <div class="m-4 flex flex-col items-center">
         <h2 class="text-lg font-medium text-gray-900">Scanner un code :</h2><br>
-        <RouterLink to="/" class="p-4 m-4 min-w-80 rounded-full text-center text-white font-medium bg-red-700 hover:bg-red-800">
+        <RouterLink to="/qrcode" class="p-4 m-4 min-w-80 rounded-full text-center text-white font-medium bg-red-700 hover:bg-red-800">
           Scan
         </RouterLink>
       </div>
@@ -28,7 +28,7 @@
 <script lang="ts">
 export default {
   setup() {
-    const defaultUserNumber = "1";
+    const defaultUserNumber = "1000000000";
 
     return {
       defaultUserNumber,

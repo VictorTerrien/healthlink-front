@@ -1,7 +1,7 @@
 <template>
     <div>
       <div class="mb-8">
-        <h1 class="text-2xl font-bold mb-8 text-center">Bienvenue "NAME"</h1>
+        <h1 class="text-2xl font-bold mb-8 text-center">Bienvenue {{ pro?.firstname || '' }} {{ pro?.lastname || '' }}</h1>
         <hr />
       </div>
       <div class="flex flex-col items-center bg-white">
@@ -14,7 +14,7 @@
               v-model="healthlink" 
               required 
               type="number" 
-              min="0" 
+              min="1000000000" 
               max="9999999999" 
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
               placeholder="xxxx-xxx-xxx"
@@ -39,7 +39,7 @@
             <p class="mb-2"><strong>Nom:</strong> {{ user.lastname }} {{ user.firstname }}</p>
             <p class="mb-2"><strong>Date de naissance:</strong> {{ user.birth_date }}</p>
             <div class="flex items-center justify-center mt-8">
-                <RouterLink :to="`/user/${user.id}`" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Accéder à plus de données</RouterLink>
+                <RouterLink :to="`/user/${healthlink}`" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Accéder à plus de données</RouterLink>
             </div>
         </div>
       </div>
@@ -58,18 +58,29 @@
       return {
         healthlink: '',
         user: null,
+        pro: null,
         route: useRoute(),
         request: "https://projet-healthlink-api.onrender.com/api/",
       };
     },
     mounted() {
       this.fetchUsers();
+      this.fetchPro();
     },
     methods: {
       async fetchUsers() {
         try {
           const response = await axios.get(this.request + "user/" + this.healthlink);
           this.user = response.data;
+        } catch (error) {
+          console.error("Erreur lors de la requête API :", error);
+        }
+      },
+      async fetchPro() {
+        try {
+          const responsePro = await axios.get(this.request + "pro/1");
+          this.pro = responsePro.data;
+          console.log(this.pro);
         } catch (error) {
           console.error("Erreur lors de la requête API :", error);
         }
