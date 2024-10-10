@@ -5,6 +5,7 @@ import UserView from "@/views/UserView.vue";
 import ProView from "@/views/ProView.vue";
 import RegisterView from "@/views/RegisterView.vue";
 import ConditionsView from "@/views/ConditionsView.vue";
+import UserViewEdit from "@/views/UserViewEdit.vue";
 import QrCodeReaderView from "@/views/QrCodeReaderView.vue";
 
 const router = createRouter({
@@ -19,6 +20,11 @@ const router = createRouter({
       path: "/user/:UserHealthLink",
       name: "User",
       component: UserView
+    },
+    {
+      path: "/userviewedit",
+      name: "Useredit",
+      component: UserViewEdit
     },
     {
       path: "/pro",

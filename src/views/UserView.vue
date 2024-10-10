@@ -1,7 +1,12 @@
 <template>
   <div class="bg-white min-h-screen">
     <div class="max-w-3xl mx-auto bg-gray-100 p-8 rounded-lg shadow-md">
-      <h2 class="text-2xl font-bold mb-4 text-center">Vos détails</h2>
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-2xl font-bold text-center">Vos détails</h2>
+        <button @click="navigateToDetails" class="bg-blue-500 p-2 rounded-full flex justify-center items-center hover:bg-blue-700" style="transform: translateX(-4px);">
+          <img src='/src/assets/860814.png' alt='Edit' class='h-5 w-5' />
+        </button>
+      </div>
       <div v-if="user">
         <p class="mb-2"><strong>Nom:</strong> {{ user.lastname }} {{ user.firstname }}</p>
         <p class="mb-2"><strong>Date de naissance:</strong> {{ user.birth_date }}</p>
@@ -64,7 +69,6 @@
       </div>
     </div>
   </div>
-
 </template>
 
 <script>
@@ -91,13 +95,19 @@ export default {
         console.error("Erreur lors de la requête API :", error);
       }
     },
+    navigateToDetails() {
+      // Navigation vers une autre vue (par exemple vers /details)
+      this.$router.push('/UserViewEdit');
+    },
   },
 };
 </script>
 
-
 <style scoped>
   .list-disc li {
     margin-bottom: 0.5rem;
+  }
+  .button {
+    cursor: pointer;
   }
 </style>
