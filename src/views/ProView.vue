@@ -47,9 +47,9 @@
         <p>En attente d'information</p>
       </div>
     </div>
-  </template>
+</template>
   
-  <script>
+<script>
   import axios from 'axios';
   import { RouterLink, useRoute } from 'vue-router';
   
@@ -90,5 +90,5 @@
       }
     },
   };
-  </script>
+</script>
   
