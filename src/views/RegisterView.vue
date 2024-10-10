@@ -36,7 +36,7 @@
 export default {
     methods: {
         submitForm() {
-            this.$router.push(`/`);
+            this.$router.push(`/user/1000000000`);
         }
     }
 };
