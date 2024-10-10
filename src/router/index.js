@@ -22,7 +22,7 @@ const router = createRouter({
       component: UserView
     },
     {
-      path: "/userviewedit",
+      path: "/userviewedit/:UserEditView",
       name: "Useredit",
       component: UserViewEdit
     },

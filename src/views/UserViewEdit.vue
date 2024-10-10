@@ -6,12 +6,11 @@
           <div class="mb-4">
             <label class="block font-semibold">Nom:</label>
             <input type="text" v-model="user.lastname" class="w-full p-2 border rounded mb-2">
-            <input type="text" v-model="user.firstname" class="w-full p-2 border rounded">
           </div>
-  
+
           <div class="mb-4">
-            <label class="block font-semibold">Date de naissance:</label>
-            <input type="date" v-model="user.birth_date" class="w-full p-2 border rounded">
+            <label class="block font-semibold">Prénom:</label>
+            <input type="text" v-model="user.firstname" class="w-full p-2 border rounded">
           </div>
   
           <div class="mb-4">
@@ -27,8 +26,8 @@
           <div class="mb-4">
             <label class="block font-semibold">Sexe:</label>
             <select v-model="user.gender" class="w-full p-2 border rounded">
-              <option value="Masculin">Masculin</option>
-              <option value="Féminin">Féminin</option>
+              <option value="M">Homme</option>
+              <option value="F">Femme</option>
               <option value="Autre">Autre</option>
             </select>
           </div>
@@ -43,10 +42,13 @@
             <div class="mb-4">
               <label class="block font-semibold">Rue:</label>
               <input type="text" v-model="user.address.street" class="w-full p-2 border rounded mb-2">
+            </div>
+            <div class="mb-4">
+              <label class="block font-semibold">Numéro rue:</label>
               <input type="text" v-model="user.address.street_number" class="w-full p-2 border rounded">
             </div>
             <div class="mb-4">
-              <label class="block font-semibold">Numéro:</label>
+              <label class="block font-semibold">Numéro Appartement:</label>
               <input type="text" v-model="user.address.appt_number" class="w-full p-2 border rounded">
             </div>
             <div class="mb-4">
@@ -59,7 +61,6 @@
             </div>
           </div>
   
-  
           <button @click="saveChanges" class="mt-6 bg-blue-500 text-white px-4 py-2 rounded">Sauvegarder les modifications</button>
         </div>
         <div v-else>
@@ -69,44 +70,87 @@
     </div>
   </template>
   
-  <script>
+  <script lang="ts">
+  import { defineComponent } from 'vue';
   import axios from 'axios';
   import { useRoute } from 'vue-router';
-  export default {
+
+  interface User {
+    id: number; 
+    lastname: string;
+    firstname: string;
+    address: {
+      street: string;
+      street_number: number; 
+      city: string;
+      zip_code: number;
+      appt_number: number;
+    };
+    height: number;
+    weight: number;
+    gender: string;
+    additional_infos: string;
+  }
+
+  export default defineComponent({
     data() {
       return {
-        user: null,
-        route: useRoute(),
+        user: null as User | null,
         request: "https://projet-healthlink-api.onrender.com/api/",
       };
+    },
+    computed: {
+      userToUpdate(): User | null { 
+        if (!this.user) {
+          return null;
+        }
+        return {
+          id: this.user.id,
+          lastname: this.user.lastname,
+          firstname: this.user.firstname,
+          address: {
+            street: this.user.address.street,
+            street_number: this.user.address.street_number,
+            city: this.user.address.city,
+            zip_code: this.user.address.zip_code,
+            appt_number: this.user.address.appt_number,
+          },
+          height: this.user.height,
+          weight: this.user.weight,
+          gender: this.user.gender,
+          additional_infos: this.user.additional_infos,
+        };
+      },
     },
     mounted() {
       this.fetchUsers();
     },
     methods: {
       async fetchUsers() {
+        const route = useRoute(); 
         try {
-          const response = await axios.get(this.request + "usereditview/" + this.route.params.UserId);
+          const response = await axios.get(`${this.request}user/${route.params.UserEditView}`);
           this.user = response.data;
         } catch (error) {
           console.error("Erreur lors de la requête API :", error);
         }
       },
       async saveChanges() {
-        try {
-          await axios.put(`https://projet-healthlink-api.onrender.com/api/user/${this.user.id}`, this.user);
-          alert('Modifications sauvegardées avec succès!');
-        } catch (error) {
-          console.error("Erreur lors de la sauvegarde des modifications :", error);
-          alert('Une erreur est survenue lors de la sauvegarde des modifications.');
+        if (this.user) {
+          try {
+            await axios.put(`${this.request}user/${this.user.id}`, this.userToUpdate);
+            alert('Modifications sauvegardées avec succès!');
+
+            this.$router.push({ name: "User", params: { UserHealthLink: this.user.healthlink_number } });
+          } catch (error) {
+            console.error("Erreur lors de la sauvegarde des modifications :", error);
+            alert('Une erreur est survenue lors de la sauvegarde des modifications. Veuillez réessayer plus tard.');
+          }
+        } else {
+          alert('Aucun utilisateur à sauvegarder.');
         }
-      },
+      }
     },
-  };
-  </script>
-  
-  <style scoped>
-    .list-disc li {
-      margin-bottom: 0.5rem;
-    }
-  </style>
+  });
+</script>
+

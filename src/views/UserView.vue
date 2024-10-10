@@ -3,9 +3,9 @@
     <div class="max-w-3xl mx-auto bg-gray-100 p-8 rounded-lg shadow-md">
       <div class="flex justify-between items-center mb-4">
         <h2 class="text-2xl font-bold text-center">Vos détails</h2>
-        <button @click="navigateToDetails" class="bg-blue-500 p-2 rounded-full flex justify-center items-center hover:bg-blue-700" style="transform: translateX(-4px);">
+        <RouterLink :to="`/userviewedit/1000000000`" class="bg-blue-500 p-2 rounded-full flex justify-center items-center hover:bg-blue-700" style="transform: translateX(-4px);">
           <img src='/src/assets/860814.png' alt='Edit' class='h-5 w-5' />
-        </button>
+        </RouterLink>
       </div>
       <div v-if="user">
         <p class="mb-2"><strong>Nom:</strong> {{ user.lastname }} {{ user.firstname }}</p>
@@ -73,7 +73,7 @@
 
 <script>
 import axios from 'axios';
-import { useRoute } from 'vue-router';
+import { RouterLink, useRoute } from 'vue-router';
 
 export default {
   data() {
@@ -94,10 +94,6 @@ export default {
       } catch (error) {
         console.error("Erreur lors de la requête API :", error);
       }
-    },
-    navigateToDetails() {
-      // Navigation vers une autre vue (par exemple vers /details)
-      this.$router.push('/UserViewEdit');
     },
   },
 };
