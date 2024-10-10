@@ -20,7 +20,7 @@ import NavBar from './components/NavBar.vue';
             <a href="#" class="hover:underline">Contact</a>
         </li>
     </ul>
-</footer>
+  </footer>
 
 </template>
 
