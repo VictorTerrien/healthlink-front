@@ -5,7 +5,7 @@
         <p>Les présentes conditions d'utilisation (ci-après "Conditions") régissent l'accès et l'utilisation de l'application mobile HealthLink (ci-après "l'Application") par ses utilisateurs (ci-après "l'Utilisateur"). En téléchargeant, installant ou utilisant l'application, l'utilisateur accepte les présentes conditions. Si l'utilisateur n'accepte pas ces conditions, il doit cesser toute utilisation de l'application.</p><br>
         <h3 class="text-lg font-medium text-gray-900">2. Description du service</h3>
         <p>HealthLink permet aux utilisateurs de stocker et de gérer des informations médicales importantes dans un espace sécurisé. Ces informations peuvent être consultées par les professionnels de santé autorisés (ci-après "les Professionnels de Santé") en cas d'urgence grâce à un code unique ("code HealthLink") attribué à chaque utilisateur.</p><br>
-        <h3 class="text-lg font-medium text-gray-900">3. Utilisation de l'Application</h3>
+        <h3 class="text-lg font-medium text-gray-900">3. Utilisation de l'application</h3>
         <p>L'Utilisateur s'engage à :
         <ul>
             <li>- Fournir des informations exactes et à jour concernant son état de santé.</li>
